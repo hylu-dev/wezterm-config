@@ -12,6 +12,18 @@ function Config:init()
    return config
 end
 
+--- Open wezterm to center of screen using half dimensions
+wezterm.on("gui-startup", function(cmd)
+	local screen = wezterm.gui.screens().main
+	local ratio = 0.5
+	local width, height = screen.width * ratio, screen.height * ratio
+	local tab, pane, window = wezterm.mux.spawn_window(cmd or {
+		position = { x = (screen.width - width) / 2, y = (screen.height - height) / 1.5 },
+	})
+	-- window:gui_window():maximize()
+	window:gui_window():set_inner_size(width, height)
+end)
+
 ---Append to `Config.options`
 ---@param new_options table new options to append
 ---@return Config
