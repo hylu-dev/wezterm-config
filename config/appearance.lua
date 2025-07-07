@@ -3,8 +3,8 @@ local backdrops = require('utils.backdrops')
 local colors = require('colors.custom')
 
 return {
-   max_fps = 120,
-   front_end = 'WebGpu',
+   max_fps = 60,
+   front_end = 'OpenGL',
    webgpu_power_preference = 'HighPerformance',
    webgpu_preferred_adapter = gpu_adapters:pick_best(),
    -- webgpu_preferred_adapter = gpu_adapters:pick_manual('Dx12', 'IntegratedGpu'),
@@ -12,7 +12,7 @@ return {
    underline_thickness = '1.5pt',
 
    -- cursor
-   animation_fps = 120,
+   animation_fps = 60,
    cursor_blink_ease_in = 'EaseOut',
    cursor_blink_ease_out = 'EaseOut',
    default_cursor_style = 'BlinkingBlock',
@@ -36,9 +36,10 @@ return {
    switch_to_last_active_tab_when_closing_tab = true,
 
    -- window
-   window_decorations = "INTEGRATED_BUTTONS",
    -- initial_cols = 120,
    -- initial_rows = 30,
+   window_decorations = 'INTEGRATED_BUTTONS', -- Will not work with acrylic or mica backdrop
+   win32_system_backdrop = 'Acrylic',
    window_padding = {
       left = 0,
       right = 0,
@@ -54,7 +55,7 @@ return {
    },
    inactive_pane_hsb = {
       saturation = 0.9,
-      brightness = 0.5,
+      brightness = 0.2,
    },
 
    visual_bell = {
